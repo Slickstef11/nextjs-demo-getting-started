@@ -39,6 +39,11 @@ export interface DragonsResponse {
 	errors?: ReadonlyArray<GraphQLError>;
 }
 
+export interface EpisodesResponse {
+	data?: EpisodesResponseData;
+	errors?: ReadonlyArray<GraphQLError>;
+}
+
 export interface UsersGetResponse {
 	data?: UsersGetResponseData;
 	errors?: ReadonlyArray<GraphQLError>;
@@ -59,6 +64,14 @@ export interface DragonsResponseData {
 		name?: string;
 		active?: boolean;
 	}[];
+}
+
+export interface EpisodesResponseData {
+	rickAndMorty_episodes?: {
+		info?: {
+			count?: number;
+		};
+	};
 }
 
 export type UsersGetResponseData = ExtractResponse<typeof function_UsersGet>;

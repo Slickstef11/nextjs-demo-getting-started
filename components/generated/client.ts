@@ -15,6 +15,8 @@ import {
 import type {
 	DragonsResponse,
 	DragonsResponseData,
+	EpisodesResponse,
+	EpisodesResponseData,
 	UsersGetResponse,
 	UsersGetInput,
 	UsersGetResponseData,
@@ -41,13 +43,16 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "1ea24f90",
+	applicationHash: "ff08847b",
 	baseURL: "http://localhost:9991",
 	sdkVersion: "0.134.0",
 };
 
 export const operationMetadata: OperationMetadata = {
 	Dragons: {
+		requiresAuthentication: false,
+	},
+	Episodes: {
 		requiresAuthentication: false,
 	},
 	"users/get": {
@@ -112,6 +117,12 @@ export type Queries = {
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
+	Episodes: {
+		input?: undefined;
+		data: EpisodesResponseData;
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
 	"users/get": {
 		input: UsersGetInput;
 		data: UsersGetResponseData;
@@ -140,6 +151,12 @@ export type LiveQueries = {
 	Dragons: {
 		input?: undefined;
 		data: DragonsResponseData;
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	Episodes: {
+		input?: undefined;
+		data: EpisodesResponseData;
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
